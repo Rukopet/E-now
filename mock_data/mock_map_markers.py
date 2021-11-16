@@ -11,14 +11,14 @@ BEGIN_POINT = (52.427547, 10.780420)
 # meters
 RANGE_CIRCLE = 5000
 MARKERS_COUNT = 20
+METERS_IN_ONE_DEGREE = 111300
 
-Meters = Degrees = int | float
-Latitude = Longitude = float
+Meters = Degrees = Latitude = Longitude = int | float
 Coordinates = tuple[Latitude, Longitude]
 
 
 def convert_meters_to_degrees(radius: Meters) -> float:
-    return radius / 111300
+    return radius / METERS_IN_ONE_DEGREE
 
 
 # TODO need check coordinates in circle or circle :D
@@ -54,7 +54,8 @@ def cycle_wrapper():
     return {
         "name": get_random_fullname(),
         "coordinates": second_point,
-        "distance": get_distance_two_coordinates(BEGIN_POINT, second_point)
+        "distance": get_distance_two_coordinates(BEGIN_POINT, second_point),
+        "price": random.uniform(0., 2.)
     }
 
 
